@@ -55,6 +55,12 @@
   
     // Add a single input layer
     model.add(tf.layers.dense({inputShape: [1], units: 1, useBias: true}));
+
+    //Second layer
+    model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
+
+    //Second layer
+    model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
   
     // Add an output layer
     model.add(tf.layers.dense({units: 1, useBias: true}));
@@ -117,6 +123,7 @@ tfvis.show.modelSummary({name: 'Model Summary'}, model);
     });
   
     const batchSize = 32;
+    //90 is the amount of epochs needed before the graphic flattens out
     const epochs = 50;
   
     return await model.fit(inputs, labels, {
